@@ -58,8 +58,8 @@ def job():
         day = 1
 
 
-schedule.every(10).seconds.do(job)
-# schedule.every(10).minutes.do(job)
+# schedule.every(10).seconds.do(job)
+schedule.every(10).minutes.do(job)
 
 
 # Comment this if u don;t wnant to run this as deamon.
