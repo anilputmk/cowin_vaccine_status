@@ -52,14 +52,14 @@ def job():
 
       for resp in response.json()['sessions']:
         if resp['min_age_limit'] == 18 and resp['available_capacity'] > 0:
-          pync.notify(f"Stock available day={day}, in block: {resp['block_name']}, address={resp['address']}, slots: {resp['slots']}")
-          print(f"Stock available day={day}, in block: {resp['block_name']}, addr= {resp['address']}, vaccine: {resp['slots']}")
+          pync.notify(f"Stock available day={day}, in block: {resp['block_name']}, address={resp['address']}, available: {resp['available_capacity']}")
+          print(f"Stock available day={day}, in block: {resp['block_name']}, addr= {resp['address']}, available: {resp['available_capacity']}")
           break
         # else:
         #   print(f"No vaccine slot for {day}, {month}, in {resp['address']}")
 
       day += 1
-      if day >= 30:
+      if day > 31:
         break
 
 
