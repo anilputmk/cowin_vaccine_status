@@ -31,6 +31,7 @@ def job():
     # pync.notify('Hello World')
     month=6
     day=1
+    print(f"Staring to poll {str(datetime.now())}")
     print(f"Day = {day}, month={month}")
     
   
@@ -42,6 +43,7 @@ def job():
     }
 
     while True:
+      print(f"Polling for day {day}")
       url = f'{baseUrl}{day}-{month}-2021'
       response = requests.get(url, headers=headers)
 
@@ -50,16 +52,19 @@ def job():
 
       for resp in response.json()['sessions']:
         if resp['min_age_limit'] == 18 and resp['available_capacity'] > 0:
-          pync.notify(f"Stock available in {resp['address']}, vaccine: {resp['slots']}")
-        else:
-          print(f"No vaccine slot for {day}, {month}, in {resp['address']}")
+          pync.notify(f"Stock available day={day}, in {resp['address']}, vaccine: {resp['slots']}")
+          print(f"Stock available day={day}, in {resp['address']}, vaccine: {resp['slots']}")
+          break
+        # else:
+        #   print(f"No vaccine slot for {day}, {month}, in {resp['address']}")
 
+      day += 1
       if day >= 30:
-        day = 1
+        break
 
 
-# schedule.every(10).seconds.do(job)
-schedule.every(10).minutes.do(job)
+schedule.every(10).seconds.do(job)
+# schedule.every(10).minutes.do(job)
 
 
 # Comment this if u don;t wnant to run this as deamon.
