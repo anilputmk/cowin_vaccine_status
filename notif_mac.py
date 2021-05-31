@@ -73,6 +73,8 @@ def job():
     day=1
     tumkur_pin_code=572101
     kyat_pin_code=572104
+    tum_pin_code=572102
+    sit_pin_code=572103
     print(f"Staring to poll {str(datetime.now())}")
     print(f"Day = {day}, month={month}")
     
@@ -94,6 +96,10 @@ def job():
 
       fetch_from_pin_code(kyat_pin_code, date, headers)
 
+      fetch_from_pin_code(tum_pin_code, date, headers)
+
+      fetch_from_pin_code(sit_pin_code, date, headers)
+      
       day += 1
       if day > 31:
         break
