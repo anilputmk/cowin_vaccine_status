@@ -6,7 +6,7 @@ import time
 import os, sys
 from daemonize import Daemonize
 from datetime import datetime
-import notify2
+# import notify2
 
 import requests
 
